@@ -6,35 +6,22 @@
 // Users will fill in each prompt with text.
 // Provide examples where it may help (e.g. show a comma-separated list of
 // toppings to indicate how to specify toppings, etc.)
-//
-// TODO: Prompt the user for what kind of bread they would like.
-// Ideally, that would look something like: "What kind of bread (white, wheat, flat)?"
+
+
+let breadOrder = prompt('What kind of bread would you like? (white,wheat, or flat)', 'wheat');
+
+
+let meatOrder = prompt('What kind of meat would you like? (Seperate multiple meats with a comma.)');
 
 
 
-// TODO: Prompt the user for what kind of meat(s) they would like.
-// Indicate they should separate multiple items with a comma:
-// "What kind of meat? (Separate meats with a comma if you would like more than one.)"
+let toppingOrder = prompt('What toppings would you like? (Seperate multiple toppings with a comma.)');
 
 
 
-// TODO: Prompt the user for what kind of toppings they would like.
-// We expect this to be multiple, so ask them to provide you with a
-// comma-separated list using a user friendly prompt.
+let condimentOrder = prompt('What condiments would you like? (Seperate multiple condiments with a comma.)');
 
 
-
-// TODO: Prompt the user for what kind of condiments they would like.
-// Again, we should expect a comma-separated list if items here.
-
-
-
-// Step Two ////////////////////////////////////////////////////////////
-//
-// Process all the input to calculate values for the user's order. The named
-// values are initialized to `null`. Change that so they equal the proper value.
-//
-// The `prices` object below specifies the prices for each thing.
 
 let prices = {
     sandwich: 5, // Base price for a sandwich is $5, includes bread
@@ -45,28 +32,28 @@ let prices = {
 
 // TODO: Convert order information from Strings to Arrays.
 
-let meatArray = null;
-let toppingArray = null;
-let condimentArray = null;
+let meatArray = meatOrder.split(',');
+let toppingArray = toppingOrder.split(',');
+let condimentArray = condimentOrder.split(',');
 
 // TODO: Calculate cost for meat, toppings, and condiments.
 // This requires you to determine the length of each Array you just made
 // and multiply out the costs. You will need to refer to the attributes of the
 // `prices` object in order to calculate these costs.
 
-let meatCost = null;
-let toppingCost = null;
-let condimentCost = null;
+let meatCost = meatArray.length * prices.meat;
+let toppingCost = toppingArray.length * prices.topping;
+let condimentCost = condimentArray.length * prices.condiment;
 
 // TODO: Combine the costs of each part of the sandwich to get the subtotal.
-let subtotal = null;
+let subtotal = prices.sandwhich + meatCost + toppingCost + condimentCost;
 
 // TODO: Calculate the tax owed using the waStateTaxRate.
 let waStateTaxRate = 0.065;
-let orderTax = null;
+let orderTax = subtotal * waStateTaxRate;
 
 // TODO: Calculate `totalPrice` by adding `subtotal` and `orderTax`.
-let totalPrice = null;
+let totalPrice = subtotal + orderTax;
 
 
 // Step Three //////////////////////////////////////////////////////////
@@ -78,20 +65,20 @@ let totalPrice = null;
 
 let receiptTemplate = `
     <p>SANDWICH ORDER</p>
-    <p>Bread: wheat</p>
-    <p>Meat: ham, turkey</p>
-    <p>Toppings: lettuce, tomato, peppers, spinach</p>
-    <p>Condiments: mayo, mustard, thousand island</p>
+    <p>Bread: ${breadOrder}</p>
+    <p>Meat: ${meatOrder}</p>
+    <p>Toppings: ${toppingOrder}</p>
+    <p>Condiments: ${condimentOrder}</p>
     <p>---------------------</p>
-    <p class="text-right">Sandwich: $4.42</p>
-    <p class="text-right">Meat: $2.00</p>
-    <p class="text-right">Toppings: $2.00</p>
-    <p class="text-right">Condiments: $1.42</p>
+    <p class="text-right">Sandwich: $${prices.sandwich.toFixed(2)}</p>
+    <p class="text-right">Meat: $${meatCost.toFixed(2)}</p>
+    <p class="text-right">Toppings: $${toppingCost.toFixed(2)}</p>
+    <p class="text-right">Condiments: $${condimentCost.toFixed(2)}</p>
     <p class="text-right">--------</p>
-    <p class="text-right">Subtotal: $9.84</p>
-    <p class="text-right">Tax: $1.42</p>
+    <p class="text-right">Subtotal: $${subtotal.toFixed(2)}</p>
+    <p class="text-right">Tax: $${orderTax.toFixed(2)}</p>
     <p class="text-right">--------</p>
-    <p class="text-right">Total: $4.84</p>
+    <p class="text-right">Total: $${totalPrice.toFixed(2)}</p>
 `
 
 ///////////////////////////////////////////////////////////////////////
