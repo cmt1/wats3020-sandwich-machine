@@ -4,8 +4,7 @@
 //
 // Gather data from the user using the prompt() command.
 // Users will fill in each prompt with text.
-// Provide examples where it may help (e.g. show a comma-separated list of
-// toppings to indicate how to specify toppings, etc.)
+// Provide examples where it may help (e.g. show a comma-separated list of// toppings to indicate how to specify toppings, etc.)
 
 
 let breadOrder = prompt('What kind of bread would you like? (white,wheat, or flat)', 'wheat');
@@ -46,7 +45,7 @@ let toppingCost = toppingArray.length * prices.topping;
 let condimentCost = condimentArray.length * prices.condiment;
 
 // TODO: Combine the costs of each part of the sandwich to get the subtotal.
-let subtotal = prices.sandwhich + meatCost + toppingCost + condimentCost;
+let subtotal = prices.sandwich + meatCost + toppingCost + condimentCost;
 
 // TODO: Calculate the tax owed using the waStateTaxRate.
 let waStateTaxRate = 0.065;
